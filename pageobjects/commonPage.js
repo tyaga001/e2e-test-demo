@@ -12,12 +12,12 @@ CommonPage.prototype = Object.create(Page.prototype);
 CommonPage.prototype.constructor = CommonPage;
 
 const acceptButton = locators.acceptButton,
-    timeout = locators.timeout,
+    timeout = locators.timeout;
 
-    CommonPage.prototype.openApp = async function() {
-        await this.driver.manage().window().maximize();
-        await this.driver.manage().deleteAllCookies();
-    };
+CommonPage.prototype.openApp = async function() {
+    await this.driver.manage().window().maximize();
+    await this.driver.manage().deleteAllCookies();
+};
 
 
 CommonPage.prototype.getTitle = async function() {

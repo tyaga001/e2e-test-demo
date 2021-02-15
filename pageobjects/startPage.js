@@ -7,13 +7,13 @@ const {
 const acceptButton = locators.acceptButton,
     alertBoxMessage = locators.alertBoxMessage,
     cookieButton = locators.cookieButton,
-    alertBoxLogo = locators.alertBoxLogo;
-timeout = locators.timeout,
+    alertBoxLogo = locators.alertBoxLogo,
+    timeout = locators.timeout;
 
-    Page.prototype.openApp = async function() {
-        await this.driver.manage().window().maximize();
-        await this.driver.manage().deleteAllCookies();
-    };
+Page.prototype.openApp = async function() {
+    await this.driver.manage().window().maximize();
+    await this.driver.manage().deleteAllCookies();
+};
 
 Page.prototype.clickAcceptButton = async function() {
     let acceptBtn = await this.findByCss(acceptButton);

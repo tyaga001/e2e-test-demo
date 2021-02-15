@@ -21,20 +21,6 @@ describe("Automated test for cars menu overlay", async function() {
         await page.openApp();
     });
 
-    it("Verify alert box message text para", async function() {
-        let isDisplayed = await page.alertBoxMessageText();
-        expect(isDisplayed).to.equal(true);
-    });
-
-    it("Verify alert box logo", async function() {
-        let isDisplayed = await page.alertBoxLogoText();
-        expect(isDisplayed).to.be.true;
-    });
-
-    it("Verify whether the accept Button is enabled and click on it", async function() {
-        let isEnabled = await page.clickAcceptButton();
-        expect(isEnabled).to.be.true;
-    });
 
     after(async function() {
         await page.quit();
