@@ -2,12 +2,12 @@ const chai = require("chai"),
     fs = require("fs"),
     expect = chai.expect,
     Page = require("../pageobjects/homePage");
-Page = require("../pageobjects/commonPage");
+CommonPage = require("../pageobjects/commonPage");
 locators = require("../utils/locators");
 const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 
-let page, driver;
+let page, driver, commonPage;
 const mochaTimeout = locators.mochaTimeout,
     baseUrl = locators.baseUrl,
     getTitle = locators.getTitle;
@@ -23,7 +23,7 @@ describe("Automated test for Home Page", async function() {
     });
 
     it("Check the title of the page", async function() {
-        const title = await page.getTitle();
+        const title = await commonPage.getTitle();
         expect(title).to.include(getTitle);
     });
 
