@@ -23,8 +23,15 @@ module.exports = {
 
 
     // Cars Overlay Page Locators
-    carMenuDesktopItems: "//*[@data-autoid='nav:carMenuDesktop']",
+    carMenuOverlay: "//div[@data-autoid='nav:carMenuDesktop']",
+    leftPanelData: "//div[@role='tablist']",
     electricCar: "//h2[normalize-space()='Electric']",
+    subTextElectricCar: "//p[normalize-space()='Pure electric']",
+    hybridCar: "//h2[normalize-space()='Hybrids']",
+    subTextHybridCar: "//p[normalize-space()='Plug-in hybrids']",
+    mildHybridCar: "//h2[normalize-space()='Mild hybrids']",
+    subTextMildHybridCar: "//p[normalize-space()='Mild hybrids | Micro hybrids']",
+
 
 
     // Chevron Circled Details Page Locators
