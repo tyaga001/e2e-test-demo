@@ -31,9 +31,9 @@ Folder Structure
     ├── ...
     │
     ├── pageobjects                 # Helper methods
-    │   ├── homePage.js             # home page functionality for tests
-    │   ├── startPage.js            # Start page testing functionality
-    |   ├── carMenuPage.js          # Care page testing functionality
+    │   ├── basePage.js             # base page functionality for tests
+    │   ├── homePage.js             # home page testing functionality
+    |   ├── carMenuPage.js          # Car overlay page testing functionality
     |   └── sideMenuPage.js         # Side menu page testing functionality
     │
     ├── test                        # Test suite
