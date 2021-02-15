@@ -1,14 +1,6 @@
 const locators = require("../utils/locators");
 let Page = require("./basePage");
 
-
-function HomePage(driver) {
-    Page.call(this, driver);
-}
-
-HomePage.prototype = Object.create(Page.prototype);
-HomePage.prototype.constructor = HomePage;
-
 const mainPageLogo = locators.mainPageLogo,
     carsMenu = locators.carsMenu,
     timeout = locators.timeout,
@@ -22,7 +14,12 @@ const mainPageLogo = locators.mainPageLogo,
     chevronCircled = locators.chevronCircled,
     pageIntroHeading = locators.pageIntroHeading;
 
-HomePage.prototype.verifyChevronCircledDisabled = async function() {
+Page.prototype.openApp = async function() {
+    await this.driver.manage().window().maximize();
+    await this.driver.manage().deleteAllCookies();
+};
+
+Page.prototype.verifyChevronCircledDisabled = async function() {
     let firstCircle = await this.findByCss(chevronCircledDisabled);
     await this.click(firstCircle);
     let isDisabled = await firstCircle.isDisabled();
@@ -31,7 +28,7 @@ HomePage.prototype.verifyChevronCircledDisabled = async function() {
     }, timeout);
 };
 
-HomePage.prototype.clickChevronCircled = async function() {
+Page.prototype.clickChevronCircled = async function() {
     let secondCircle = await this.findByCss(chevronCircled);
     await this.click(secondCircle);
     let isEnabled = await firstCircle.isEnabled();
@@ -40,22 +37,22 @@ HomePage.prototype.clickChevronCircled = async function() {
     }, timeout);
 };
 
-HomePage.prototype.openCarsMenu = async function() {
+Page.prototype.openCarsMenu = async function() {
     let carMenu = await this.findByXpath(carsMenu);
     return await this.click(carMenu);
 };
 
-HomePage.prototype.openSideMenu = async function() {
+Page.prototype.openSideMenu = async function() {
     let sideMenuList = await this.findByXpath(sideMenu);
     return await this.click(sideMenuList);
 };
 
-HomePage.prototype.getPageUrl = async function() {
+Page.prototype.getPageUrl = async function() {
     const homePageUrl = await this.driver.getCurrentUrl();
     return homePageUrl;
 };
 
-HomePage.prototype.homePageLogo = async function() {
+Page.prototype.homePageLogo = async function() {
     let logo = await this.findByXpath(mainPageLogo);
     await this.elementIsVisible(logo);
     let isVisible = await logo.isDisplayed()
@@ -64,7 +61,7 @@ HomePage.prototype.homePageLogo = async function() {
     }, timeout);
 };
 
-HomePage.prototype.homePageHeading = async function() {
+Page.prototype.homePageHeading = async function() {
     let homePageInroductionHeading = await this.findByXpath(pageIntroHeading);
     await this.elementIsVisible(homePageInroductionHeading);
     let isVisible = await homePageInroductionHeading.isDisplayed()
@@ -73,7 +70,7 @@ HomePage.prototype.homePageHeading = async function() {
     }, timeout);
 };
 
-HomePage.prototype.homePageIntroPara = async function() {
+Page.prototype.homePageIntroPara = async function() {
     let homePageInroductionPara = await this.findByXpath(pageIntroPara);
     await this.elementIsVisible(homePageInroductionPara);
     let isVisible = await homePageInroductionPara.isDisplayed()
@@ -82,7 +79,7 @@ HomePage.prototype.homePageIntroPara = async function() {
     }, timeout);
 };
 
-HomePage.prototype.homePageProductListCarouselTitle = async function() {
+Page.prototype.homePageProductListCarouselTitle = async function() {
     let carouselTitle = await this.findByXpath(productListCarouselTitle);
     await this.elementIsVisible(carouselTitle);
     let isVisible = await carouselTitle.isDisplayed()
@@ -91,7 +88,7 @@ HomePage.prototype.homePageProductListCarouselTitle = async function() {
     }, timeout);
 };
 
-HomePage.prototype.verifyMainVideo = async function() {
+Page.prototype.verifyMainVideo = async function() {
     let openVideo = await this.findByCss(pageMainVideo);
     await this.elementIsVisible(openVideo);
     let isVisible = await openVideo.isDisplayed();
@@ -100,4 +97,4 @@ HomePage.prototype.verifyMainVideo = async function() {
         return isVisible;
     }, timeout);
 };
-module.exports = HomePage;
+module.exports = Page;

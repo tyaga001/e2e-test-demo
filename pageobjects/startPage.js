@@ -25,10 +25,10 @@ Page.prototype.clickAcceptButton = async function() {
     }, timeout);
 };
 
-Page.prototype.getTitle = async function() {
-    const title = await this.driver.getTitle();
-    return title;
-};
+// Page.prototype.getTitle = async function() {
+//     const title = await this.driver.getTitle();
+//     return title;
+// };
 
 
 Page.prototype.clickCookieButton = async function() {
