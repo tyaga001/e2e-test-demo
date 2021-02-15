@@ -35,8 +35,6 @@ module.exports = {
     carCategoryTitle: "//*[@id='site-nav-cars-menu-section-panel-1']//a[@data-autoid='nav:carCategoryTitle']",
 
 
-
-
     // Side menu Details Page Locators
     sideNavLogoSmall: "//*[@data-autoid='nav:siteNavLogoSmall']",
     buildYourOwnLink: "//*[contains(text(),'Build Your Own')]//parent::a",
@@ -51,7 +49,5 @@ module.exports = {
     fleetSales: "//em[normalize-space()='Fleet sales']",
     usedCars: "//em[normalize-space()='Used cars']",
     diplomaticSales: "//em[normalize-space()='Diplomatic sales']"
-
-
 
 };

@@ -89,6 +89,12 @@ var Page = function() {
         return await driver.executeScript("return arguments[0].click();", element);
     };
 
+
+    this.sideMenuClick = async function(element) {
+        return await driver.executeScript("return arguments[0].dispatchEvent(new MouseEvent(‘click’));", element);
+    };
+
+
     this.write = async function(element, txt) {
         await actions
             .click(element)

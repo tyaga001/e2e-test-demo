@@ -20,8 +20,14 @@ describe("Automated test for side menu panel", async function() {
         await page.openApp();
     });
 
+    it("Verify whether the accept Button is enabled and click on it", async function() {
+        let isEnabled = await page.clickAcceptButton();
+        expect(isEnabled).to.be.true;
+    });
+
     it("open side menu", async function() {
-        let isEnabled = await page.openSideMenu;
+        this.timeout = 5000;
+        let isEnabled = await page.openSideMenu();
         expect(isEnabled).to.be.true;
     });
 

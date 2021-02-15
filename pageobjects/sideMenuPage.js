@@ -6,6 +6,7 @@ const {
 
 const sideNavLogoSmall = locators.sideNavLogoSmall,
     buildYourOwnLink = locators.buildYourOwnLink,
+    acceptButton = locators.acceptButton,
     buyLink = locators.buyLink,
     ownLink = locators.ownLink,
     whyVolvoLink = locators.whyVolvoLink,
@@ -27,8 +28,8 @@ Page.prototype.openApp = async function() {
 
 Page.prototype.openSideMenu = async function() {
     let sideMenuBar = await this.findByXpath(sideMenu);
-    await this.click(sideMenuBar);
-    let isEnabled = await acceptBtn.isEnabled();
+    await this.sideMenuClick(sideMenuBar);
+    let isEnabled = await sideMenuBar.isEnabled();
 
     return await this.driver.wait(async function() {
         return isEnabled;
@@ -76,12 +77,22 @@ Page.prototype.verifyMoreLink = async function() {
 Page.prototype.closeSideBar = async function() {
     let button = await this.findByXpath(closeButton);
     await this.click(button);
-    let isEnabled = await closeButton.isEnabled();
+    let isEnabled = await button.isEnabled();
 
     return await this.driver.wait(async function() {
         return isEnabled;
     }, timeout);
 }
+
+Page.prototype.clickAcceptButton = async function() {
+    let acceptBtn = await this.findByCss(acceptButton);
+    await this.click(acceptBtn);
+    let isEnabled = await acceptBtn.isEnabled();
+
+    return await this.driver.wait(async function() {
+        return isEnabled;
+    }, timeout);
+};
 
 
 Page.prototype.openBuyPanel = async function() {
