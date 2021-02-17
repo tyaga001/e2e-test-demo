@@ -1,6 +1,3 @@
-const {
-    Browser
-} = require("selenium-webdriver");
 const locators = require("../utils/locators");
 let Page = require("./basePage");
 
@@ -24,21 +21,19 @@ Page.prototype.openApp = async function() {
 };
 
 Page.prototype.verifyChevronCircledDisabled = async function() {
-    let browser = Browser;
     let firstCircle = await this.findByXpath(chevronCircledDisabled);
-    browser.waitForVisible(chevronCircledDisabled);
-    browser.scroll(chevronCircledDisabled);
     await this.click(firstCircle);
-    let isDisabled = await firstCircle.isDisabled();
+
+    let isDisplayed = await firstCircle.isDisplayed();
     return await this.driver.wait(async function() {
-        return isDisabled;
+        return isDisplayed;
     }, timeout);
 };
 
 Page.prototype.clickChevronCircled = async function() {
     let secondCircle = await this.findByXpath(chevronCircled);
     await this.click(secondCircle);
-    let isEnabled = await firstCircle.isEnabled();
+    let isEnabled = await secondCircle.isEnabled();
     return await this.driver.wait(async function() {
         return isEnabled;
     }, timeout);
@@ -110,7 +105,6 @@ Page.prototype.verifyMainVideo = async function() {
     let openVideo = await this.findByXpath(pageMainVideo);
     await this.elementIsVisible(openVideo);
     let isVisible = await openVideo.isDisplayed();
-    await this.click(pageMainVideo);
     return await this.driver.wait(async function() {
         return isVisible;
     }, timeout);

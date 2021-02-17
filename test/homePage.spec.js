@@ -5,16 +5,14 @@ const chai = require("chai"),
 CommonPage = require("../pageobjects/commonPage");
 locators = require("../utils/locators");
 const chaiAsPromised = require("chai-as-promised");
-const {
-    chevronCircledDisabled
-} = require("../utils/locators");
-//const locators = require("../utils/locators");
 chai.use(chaiAsPromised);
 
-let page, driver, commonPage;
+let page, driver, javascriptExecutor, window;
 const mochaTimeout = locators.mochaTimeout,
     baseUrl = locators.baseUrl,
     getTitle = locators.getTitle,
+    chevronCircledDisabled = locators.chevronCircledDisabled,
+    chevronCircled = locators.chevronCircled,
     nextCar = locators.nextCar;
 
 describe("Automated test for Home Page", async function() {
@@ -54,24 +52,26 @@ describe("Automated test for Home Page", async function() {
     });
 
     // it("Verify homePageProductListCarouselTitle", async function() {
+    //     ((javascriptExecutor), driver).executeScript("javascript:window.scrollBy(0,1000)");
     //     let isDisplayed = await page.homePageProductListCarouselTitle();
     //     expect(isDisplayed).to.be.true;
     // });
 
-    // it("Verify homePageverifyMainVideo", async function() {
-    //     let isDisplayed = await page.verifyMainVideo();
-    //     expect(isDisplayed).to.be.true;
-    // });
-
-    it("Verify chevron Circled Disabled", async function() {
-        let isDisabled = await page.verifyChevronCircledDisabled();
-        expect(isDisabled).to.be.true;
+    it("Verify homePageverifyMainVideo", async function() {
+        ((javascriptExecutor), driver).executeScript("javascript:window.scrollBy(0,500)");
+        let isDisplayed = await page.verifyMainVideo();
+        expect(isDisplayed).to.be.true;
     });
 
     it("Verify chevron Circled Disabled", async function() {
-        let isDisabled = await page.clickChevronCircled();
-        let nextCar = nextCar;
-        expect(nextCar).to.be.true;
+        ((javascriptExecutor), driver).executeScript("javascript:window.scrollBy(0,4500)");
+        this.timeout = 2000;
+        let isDisplayed = await page.verifyChevronCircledDisabled();
+        expect(isDisplayed).to.be.true;
+    });
+
+    it("Verify next chevron is working fine", async function() {
+        let nextCar = await page.clickChevronCircled();
     });
 
 
