@@ -11,6 +11,7 @@ const carMenuOverlay = locators.carMenuOverlay,
     subTextMildHybridCar = locators.subTextMildHybridCar,
     carCategoryTitle = locators.carCategoryTitle,
     acceptButton = locators.acceptButton,
+    carsMenu = locators.carsMenu,
     timeout = locators.timeout;
 
 Page.prototype.openApp = async function() {
@@ -19,8 +20,8 @@ Page.prototype.openApp = async function() {
 };
 
 Page.prototype.clickCarMenu = async function() {
-    let overlay = await this.findByXpath(carMenuOverlay);
-    await this.click(overlay);
+    let menu = await this.findByXpath(carsMenu);
+    await this.click(menu);
     return await this.driver.getCurrentUrl();
 }
 

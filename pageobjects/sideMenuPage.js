@@ -19,6 +19,7 @@ const sideNavLogoSmall = locators.sideNavLogoSmall,
     usedCars = locators.usedCars,
     diplomaticSales = locators.diplomaticSales,
     sideMenu = locators.sideMenu,
+    openBuyLink = locators.openBuyLink,
     timeout = locators.timeout;
 
 Page.prototype.openApp = async function() {
@@ -28,7 +29,7 @@ Page.prototype.openApp = async function() {
 
 Page.prototype.openSideMenu = async function() {
     let sideMenuBar = await this.findByXpath(sideMenu);
-    await this.sideMenuClick(sideMenuBar);
+    await this.click(sideMenuBar);
     let isEnabled = await sideMenuBar.isEnabled();
 
     return await this.driver.wait(async function() {
@@ -96,9 +97,9 @@ Page.prototype.clickAcceptButton = async function() {
 
 
 Page.prototype.openBuyPanel = async function() {
-    let link = await this.findByXpath(buyLink);
+    let link = await this.findByXpath(openBuyLink);
     await this.click(link);
-    let isEnabled = await buyLink.isEnabled();
+    let isEnabled = await link.isEnabled();
 
     return await this.driver.wait(async function() {
         return isEnabled;

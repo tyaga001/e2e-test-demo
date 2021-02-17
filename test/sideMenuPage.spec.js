@@ -26,7 +26,6 @@ describe("Automated test for side menu panel", async function() {
     });
 
     it("open side menu", async function() {
-        this.timeout = 5000;
         let isEnabled = await page.openSideMenu();
         expect(isEnabled).to.be.true;
     });
@@ -70,34 +69,35 @@ describe("Automated test for side menu panel", async function() {
         expect(isDisplayed).to.be.true;
     });
 
-    it("Open Buy Panel", async function() {
-        let isEnabled = await page.openBuyPanel();
-        expect(isEnabled).to.be.true;
-    });
+    // it("Open Buy Panel", async function() {
+    //     this.timeout = 1000;
+    //     let isEnabled = await page.openBuyPanel();
+    //     expect(isEnabled).to.be.true;
+    // });
 
 
-    it("Verify Buy Title", async function() {
-        let isEnabled = await page.verifyBuyTitle();
-        expect(isEnabled).to.be.true;
-    });
+    // it("Verify Buy Title", async function() {
+    //     let isEnabled = await page.verifyBuyTitle();
+    //     expect(isEnabled).to.be.true;
+    // });
 
 
-    it("Verify Fleet Sales Sub Title", async function() {
-        let isEnabled = await page.verifyFleetSalesSubTitle();
-        expect(isEnabled).to.be.true;
-    });
+    // it("Verify Fleet Sales Sub Title", async function() {
+    //     let isEnabled = await page.verifyFleetSalesSubTitle();
+    //     expect(isEnabled).to.be.true;
+    // });
 
 
-    it("Verify Used Cars Sub Title", async function() {
-        let isEnabled = await page.verifyUsedCarsSubTitle();
-        expect(isEnabled).to.be.true;
-    });
+    // it("Verify Used Cars Sub Title", async function() {
+    //     let isEnabled = await page.verifyUsedCarsSubTitle();
+    //     expect(isEnabled).to.be.true;
+    // });
 
 
-    it("Verify Diplomatic Sales Sub Title", async function() {
-        let isEnabled = await page.verifyDiplomaticSalesSubTitle();
-        expect(isEnabled).to.be.true;
-    });
+    // it("Verify Diplomatic Sales Sub Title", async function() {
+    //     let isEnabled = await page.verifyDiplomaticSalesSubTitle();
+    //     expect(isEnabled).to.be.true;
+    // });
 
     it("Close Side Panel", async function() {
         let isEnabled = await page.closeSideBar();
