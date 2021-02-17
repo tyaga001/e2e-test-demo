@@ -26,7 +26,7 @@ Page.prototype.openApp = async function() {
 Page.prototype.verifyChevronCircledDisabled = async function() {
     let browser = Browser;
     let firstCircle = await this.findByXpath(chevronCircledDisabled);
-    // browser.waitForVisible(chevronCircledDisabled);
+    browser.waitForVisible(chevronCircledDisabled);
     browser.scroll(chevronCircledDisabled);
     await this.click(firstCircle);
     let isDisabled = await firstCircle.isDisabled();
