@@ -1,3 +1,6 @@
+const {
+    Browser
+} = require("selenium-webdriver");
 const locators = require("../utils/locators");
 let Page = require("./basePage");
 
@@ -12,6 +15,7 @@ const mainPageLogo = locators.mainPageLogo,
     productListCarouselItem = locators.productListCarouselItem,
     chevronCircledDisabled = locators.chevronCircledDisabled,
     chevronCircled = locators.chevronCircled,
+    acceptButton = locators.acceptButton,
     pageIntroHeading = locators.pageIntroHeading;
 
 Page.prototype.openApp = async function() {
@@ -20,7 +24,10 @@ Page.prototype.openApp = async function() {
 };
 
 Page.prototype.verifyChevronCircledDisabled = async function() {
-    let firstCircle = await this.findByCss(chevronCircledDisabled);
+    let browser = Browser;
+    let firstCircle = await this.findByXpath(chevronCircledDisabled);
+    // browser.waitForVisible(chevronCircledDisabled);
+    browser.scroll(chevronCircledDisabled);
     await this.click(firstCircle);
     let isDisabled = await firstCircle.isDisabled();
     return await this.driver.wait(async function() {
@@ -29,7 +36,7 @@ Page.prototype.verifyChevronCircledDisabled = async function() {
 };
 
 Page.prototype.clickChevronCircled = async function() {
-    let secondCircle = await this.findByCss(chevronCircled);
+    let secondCircle = await this.findByXpath(chevronCircled);
     await this.click(secondCircle);
     let isEnabled = await firstCircle.isEnabled();
     return await this.driver.wait(async function() {
@@ -51,6 +58,17 @@ Page.prototype.getPageUrl = async function() {
     const homePageUrl = await this.driver.getCurrentUrl();
     return homePageUrl;
 };
+
+Page.prototype.clickAcceptButton = async function() {
+    let acceptBtn = await this.findByCss(acceptButton);
+    await this.click(acceptBtn);
+    let isEnabled = await acceptBtn.isEnabled();
+
+    return await this.driver.wait(async function() {
+        return isEnabled;
+    }, timeout);
+};
+
 
 Page.prototype.homePageLogo = async function() {
     let logo = await this.findByXpath(mainPageLogo);
@@ -89,7 +107,7 @@ Page.prototype.homePageProductListCarouselTitle = async function() {
 };
 
 Page.prototype.verifyMainVideo = async function() {
-    let openVideo = await this.findByCss(pageMainVideo);
+    let openVideo = await this.findByXpath(pageMainVideo);
     await this.elementIsVisible(openVideo);
     let isVisible = await openVideo.isDisplayed();
     await this.click(pageMainVideo);

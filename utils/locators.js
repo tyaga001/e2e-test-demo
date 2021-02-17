@@ -18,6 +18,7 @@ module.exports = {
     productListCarouselItem: "//[@data-autoid='productListCarouselItem:category']']//h2",
     chevronCircledDisabled: "//*[@data-autoid='chevronCircled:rotated--180']",
     chevronCircled: "//*[@data-autoid='chevronCircled:rotated-0']",
+    nextCar: "//span[normalize-space()='V90 Recharge']",
     timeout: 5000,
     homePageUrl: "https://www.volvocars.com/intl/v/car-safety/a-million-more",
 
