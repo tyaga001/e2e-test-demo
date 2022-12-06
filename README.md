@@ -1,4 +1,4 @@
-# Volvo Cars Test automation assignment: - Automation Testing With Node.js, Javascript And Selenium WebDriver
+# e2e test demo: - Automation Testing With Node.js, Javascript And Selenium WebDriver
 
 Test Framework Design in Page Objects
 
